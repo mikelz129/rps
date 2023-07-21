@@ -4,8 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.3.0/math.min.js></script>
+
+    
+    
+    <style>
+        body {
+            background-color: #111827;
+            color: white;
+        }
+    </style>
 </head>
 <body>
     wut?
+<script>
+    console.log('hello world')
+
+    function getRandomInt() {
+        return Math.floor(Math.random() * 3);
+    }
+
+    function getComputerChoice() {
+        let compChoice = getRandomInt();
+        if (compChoice === 0) {
+            return 'rock'
+        } else if (compChoice === 1) {
+            return 'paper'
+        } else {
+            return 'scissors'
+        }
+    }
+
+    function rps() {
+        let choice = prompt('Rock, Paper, or Scissors?','paper');
+        playerChoice = choice.toLowerCase();
+        console.log(playerChoice);
+        computerSelection = getComputerChoice();
+        console.log(computerSelection);
+        if (playerChoice === 'rock' && computerSelection === 'paper') {
+            console.log('Paper beats rock. You lose, dumbass!')
+        } else if (playerChoice === 'rock' && computerSelection === 'scissors') {
+            console.log('Rock beats scissors. You win!')
+        } else if (playerChoice === 'paper' && computerSelection === 'scissors') {
+            console.log('Scissors beats paper. You lose, dumbass!')
+        } else if (playerChoice === 'paper' && computerSelection === 'rock') {
+            console.log('Paper beats rock. You win!')
+        } else if (playerChoice === 'scissors' && computerSelection === 'rock') {
+            console.log('Rock beats scissors. You lose, dumbass!')
+        } else if (playerChoice === 'scissors' && computerSelection === 'paper') {
+            console.log('Scissors beats paper. You win!')
+        } else {console.log('Let\'s call it a draw')}
+    }
+    
+
+
+
+
+</script>
 </body>
 </html>
