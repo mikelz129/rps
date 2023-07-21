@@ -12,13 +12,19 @@
         body {
             background-color: #111827;
             color: white;
+            padding: 50%;
         }
     </style>
 </head>
 <body>
-    wut?
+    <button onclick = "rps('rock')" > Rock </button>
+    <button onclick = "rps('paper')" > Paper </button>
+    <button onclick = "rps('scissors')" > Scissors </button>
+    
+
 <script>
-    console.log('hello world')
+    let playerScore = 0;
+    let compScore = 0;
 
     function getRandomInt() {
         return Math.floor(Math.random() * 3);
@@ -35,26 +41,62 @@
         }
     }
 
-    function rps() {
-        let choice = prompt('Rock, Paper, or Scissors?','paper');
-        playerChoice = choice.toLowerCase();
-        console.log(playerChoice);
-        computerSelection = getComputerChoice();
-        console.log(computerSelection);
-        if (playerChoice === 'rock' && computerSelection === 'paper') {
-            console.log('Paper beats rock. You lose, dumbass!')
-        } else if (playerChoice === 'rock' && computerSelection === 'scissors') {
-            console.log('Rock beats scissors. You win!')
-        } else if (playerChoice === 'paper' && computerSelection === 'scissors') {
-            console.log('Scissors beats paper. You lose, dumbass!')
-        } else if (playerChoice === 'paper' && computerSelection === 'rock') {
-            console.log('Paper beats rock. You win!')
-        } else if (playerChoice === 'scissors' && computerSelection === 'rock') {
-            console.log('Rock beats scissors. You lose, dumbass!')
-        } else if (playerChoice === 'scissors' && computerSelection === 'paper') {
-            console.log('Scissors beats paper. You win!')
-        } else {console.log('Let\'s call it a draw')}
+    function rps(x) {
+        let playerChoice = x
+        let compChoice = getComputerChoice()
+        console.log('Player chooses',playerChoice);
+        console.log('Computer chooses',compChoice);
+        if (playerChoice === 'rock' && compChoice === 'scissors' 
+            || playerChoice === 'paper' && compChoice === 'rock' 
+            || playerChoice === 'scissors' && compChoice === 'paper') {
+                console.log(playerChoice + " beats " + compChoice + ', you win!');
+                playerScore++;
+                console.log('The score is now: Player ' + playerScore + ', Computer ' + compScore);
+                if (playerScore === 5) {
+                    alert('You win!')
+                    compScore = 0;
+                    playerScore = 0
+                }
+
+        } else if (playerChoice === 'rock' && compChoice === 'paper' 
+            || playerChoice === 'paper' && compChoice === 'scissors' 
+            || playerChoice === 'scissors' && compChoice === 'rock') {
+                console.log(compChoice + " beats " + playerChoice + ', you lose, dumbass!!!');
+                compScore++;
+                console.log('The score is now: Player ' + playerScore + ', Computer ' + compScore);
+                if (compScore === 5) {
+                    alert('You win!');
+                    compScore = 0;
+                    playerScore = 0
+                }
+        } else {
+            console.log(playerChoice + " draws " + compChoice + ', try again!');
+                console.log('The score is still: Player ' + playerScore + ', Computer ' + compScore)
+        }
     }
+
+    // function rps(x) {
+    //     let choice = x;
+    //     // playerChoice = choice.toLowerCase();
+    //     // console.log(playerChoice);
+    //     computerSelection = getComputerChoice();
+    //     console.log(computerSelection);
+    //     if (choice === 'rock' && computerSelection === 'paper') {
+    //         console.log('Paper beats rock. You lose, dumbass!');
+    //         compScore++;
+    //         console.log(playerScore,compScore)
+    //     } else if (playerChoice === 'rock' && computerSelection === 'scissors') {
+    //         console.log('Rock beats scissors. You win!')
+    //     } else if (playerChoice === 'paper' && computerSelection === 'scissors') {
+    //         console.log('Scissors beats paper. You lose, dumbass!')
+    //     } else if (playerChoice === 'paper' && computerSelection === 'rock') {
+    //         console.log('Paper beats rock. You win!')
+    //     } else if (playerChoice === 'scissors' && computerSelection === 'rock') {
+    //         console.log('Rock beats scissors. You lose, dumbass!')
+    //     } else if (playerChoice === 'scissors' && computerSelection === 'paper') {
+    //         console.log('Scissors beats paper. You win!')
+    //     } else {console.log('Let\'s call it a draw')}
+    // }
     
 
 
